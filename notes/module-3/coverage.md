@@ -1,6 +1,6 @@
-# Module III coverage plan
+# Module III coverage plan and completion record
 
-Scope: XML, AJAX, jQuery, and JSON. React.js and Node.js are excluded. This is a plan, not study notes; unchecked items below are coverage still to be written.
+Scope: XML, AJAX, jQuery, and JSON. React.js and Node.js are excluded. All 28 included syllabus entries are covered in [notes/module-3.md](../module-3.md), the single study-notes file. The original four-file proposal has been superseded.
 
 Authority: [exam instructions](../../sources/exam-instructions.md) and [syllabus, PDF page 3](../../sources/syllabus/IWT-7th-Semester-IT.pdf#page=3). Every included syllabus entry is mapped below. PYQs influence emphasis, never eligibility.
 
@@ -8,7 +8,7 @@ Authority: [exam instructions](../../sources/exam-instructions.md) and [syllabus
 
 **High** means extra revision emphasis because of repeated/direct PYQs or a concept's central role. **Core** means required syllabus coverage with a focused explanation. Neither label permits omission. **Brief support** means a small supporting explanation, not a new chapter.
 
-For a substantial topic, plan enough material for a coherent answer: purpose, mechanism or rules, a useful comparison, and one small example where needed. Explain methods by what they do, not just their names. Older programming questions justify short illustrative snippets, not full applications under the current mostly-theoretical instruction.
+For a substantial topic, retain enough material for a coherent answer: purpose, mechanism or rules, a useful comparison, and one small example where needed. Explain methods by what they do, not just their names. Older programming questions justify short illustrative snippets, not full applications under the current mostly-theoretical instruction.
 
 ## PYQ reference key
 
@@ -24,98 +24,100 @@ Page numbers refer to PDF pages. Years are taken from visible paper headings whe
 
 **Source cautions:** E p. 1 duplicates D p. 1; count it once. E p. 2 is an unrelated Android paper, not XML syllabus evidence. E p. 3 has no visible date, so do not assign it to 2023 solely from its filename. The two 2021 filenames are retained as labels, not independently verified exam dates. C p. 5 is blank and p. 4 ends mid-question; the relevant XML question on p. 2 is readable. Older papers contain many topics outside the current syllabus.
 
-## Coverage checklist and proposed file outlines
+## Completed coverage checklist
 
-Each numbered item is a proposed major heading in the named file. Smaller concepts are listed within it. Shared explanations should be cross-referenced rather than repeated.
+Checked entries have been reviewed against the completed notes. Section numbers refer to `notes/module-3.md`; the descriptions record the coverage criteria and depth to preserve in future edits.
 
-### `xml.md` — XML structure, validation, and transformation
+### XML — sections 1.1–1.9
 
 Reference: [XML.pdf](<../../sources/sir's notes/XML.pdf>), all 15 pages; especially pp. 6–11 for structure, namespaces, DTD and schema, and pp. 12–15 for presentation/XSL.
 
 1. **What XML is and how it differs from HTML**
-   - [ ] Introduction to XML — **Core**. Purpose, custom tags, structured data, useful properties and a few applications. B Q5.i–iv provides context.
-   - [ ] XML versus HTML — **Core**. Compare purpose, tags, structure and syntax in a small table. No direct question found in the supplied set; still required.
+   - [x] Introduction to XML (§1.1) — **Core**. Purpose, custom tags, structured data, useful properties and a few applications. B Q5.i–iv provides context.
+   - [x] XML versus HTML (§1.2) — **Core**. Compare purpose, tags, structure and syntax in a small table. No direct question found in the supplied set; still required.
 2. **XML document structure and well-formedness**
-   - [ ] Structure of an XML document — **High**. Declaration, root, elements, attributes, text, comments, entities and parent/child relationships. Briefly distinguish text/CDATA and empty elements. Use one annotated book example. A Q2.B.i; B Q5.i–iii; C Q3.ii.
-   - [ ] Well-formed XML documents — **High**. Explain the syntax rules and show a small error/correction. C Q3.i.
+   - [x] Structure of an XML document (§1.3) — **High**. Declaration, root, elements, attributes, text, comments, entities and parent/child relationships. Briefly distinguish text/CDATA and empty elements. Use one annotated book example. A Q2.B.i; B Q5.i–iii; C Q3.ii.
+   - [x] Well-formed XML documents (§1.4) — **High**. Explain the syntax rules and show a small error/correction. C Q3.i.
 3. **Validation, DTD, and XML Schema**
-   - [ ] XML validation — **High**. Explain what a validator checks and why a shared document contract matters. C Q3.i–ii.
-   - [ ] Valid XML document — **High**. Distinguish syntax correctness from conformance to a DTD/schema, with a well-formed but invalid case. C Q3.i.
-   - [ ] Document Type Declaration (DTD) — **High**. Clarify the syllabus terminology: DTD means Document Type Definition; DOCTYPE is the declaration associating it with XML. Explain internal/external DTDs, ELEMENT and ATTLIST, text and mixed content, sequence/choice, and `?`, `*`, `+`. Include one short matching XML/DTD pair and external-reference syntax. A Q2.B.i; B Q5.i–iii; C Q3.i–ii.
-   - [ ] XML Schema — **Core**. Purpose, basic types, simple/complex types, elements/attributes, sequence and occurrence constraints; one small XSD example and DTD-versus-XSD comparison. No direct PYQ found.
+   - [x] XML validation (§1.4) — **High**. Explain what a validator checks and why a shared document contract matters. C Q3.i–ii.
+   - [x] Valid XML document (§1.4) — **High**. Distinguish syntax correctness from conformance to a DTD/schema, with a well-formed but invalid case. C Q3.i.
+   - [x] Document Type Declaration (DTD) (§1.5) — **High**. Clarify the syllabus terminology: DTD means Document Type Definition; DOCTYPE is the declaration associating it with XML. Explain internal/external DTDs, ELEMENT and ATTLIST, text and mixed content, sequence/choice, and `?`, `*`, `+`. Include one short matching XML/DTD pair and external-reference syntax. A Q2.B.i; B Q5.i–iii; C Q3.i–ii.
+   - [x] XML Schema (§1.6) — **Core**. Purpose, basic types, simple/complex types, elements/attributes, sequence and occurrence constraints; one small XSD example and DTD-versus-XSD comparison. No direct PYQ found.
 4. **XML namespaces**
-   - [ ] XML Namespaces — **Core**. Name collisions, URI identifiers, prefixes, default namespaces and scope; one collision/resolution example. Briefly clarify the treatment of unprefixed attributes. No direct PYQ found.
+   - [x] XML Namespaces (§1.7) — **Core**. Name collisions, URI identifiers, prefixes, default namespaces and scope; one collision/resolution example. Briefly clarify the treatment of unprefixed attributes. No direct PYQ found.
 5. **Reading and changing XML with the DOM**
-   - [ ] XML DOM — **Core**. Document/element/text/attribute nodes, tree relationships, parsing, selecting, reading, changing, adding and removing nodes. One tiny tree and access example; no full parser program. No direct PYQ found.
+   - [x] XML DOM (§1.8) — **Core**. Document/element/text/attribute nodes, tree relationships, parsing, selecting, reading, changing, adding and removing nodes. One tiny tree and access example; no full parser program. No direct PYQ found.
 6. **XSL and XML transformation**
-   - [ ] XSL — **Core**. Purpose and relationship of XSLT, XPath and XSL-FO; keep XPath and XSL-FO to supporting roles.
-   - [ ] XSL Transformation — **Core**. XML + stylesheet + processor → output; template matching and value selection in one tiny XML-to-HTML example. Briefly contrast CSS styling with transformation. No direct PYQ found for either XSL entry.
+   - [x] XSL (§1.9) — **Core**. Purpose and relationship of XSLT, XPath and XSL-FO; keep XPath and XSL-FO to supporting roles.
+   - [x] XSL Transformation (§1.9) — **Core**. XML + stylesheet + processor → output; template matching and value selection in one tiny XML-to-HTML example. Briefly contrast CSS styling with transformation. No direct PYQ found for either XSL entry.
 
-### `ajax.md` — Requests, responses, and partial page updates
+### AJAX — sections 2.1–2.7
 
 Reference: [AJAX.pdf](<../../sources/sir's notes/AJAX.pdf>), all 11 pages; pp. 1–4 for the basic flow, pp. 4–7 for XML-backed responses, pp. 7–11 for database-backed responses.
 
 1. **What AJAX does and how it works**
-   - [ ] AJAX introduction — **High**. Meaning, participating technologies, AJAX versus JavaScript, traditional versus partial updates, benefits and practical limitations. Explain synchronous/asynchronous requests and callbacks. Include a simple browser/server flow diagram and a short use case. A Q4.A; D Q2(b), Q4(b)(iv), December Q3(i); E Q1(a), Q2.
+   - [x] AJAX introduction (§2.1–2.3) — **High**. Meaning, participating technologies, AJAX versus JavaScript, traditional versus partial updates, benefits and practical limitations. Explain synchronous/asynchronous requests and callbacks. Include a simple browser/server flow diagram and a short use case. A Q4.A; D Q2(b), Q4(b)(iv), December Q3(i); E Q1(a), Q2.
 2. **The XMLHttpRequest object**
-   - [ ] XMLHttpRequest — **High**. Creation and request lifecycle; `open`, `send`, request headers and a brief GET/POST comparison. Include a compact methods/properties table and one annotated request snippet. A Q4.A; D December Q3(ii).
+   - [x] XMLHttpRequest (§2.4–2.5) — **High**. Creation and request lifecycle; `open`, `send`, request headers and a brief GET/POST comparison. Include a compact methods/properties table and one annotated request snippet. A Q4.A; D December Q3(ii).
 3. **Understanding the server response**
-   - [ ] AJAX server response — **High**. Ready states 0–4, `onreadystatechange`, HTTP status versus readyState, success/error handling, `responseText` versus `responseXML`, and updating the page. D Q1(b), Q2(b); A Q4.A.
+   - [x] AJAX server response (§2.5) — **High**. Ready states 0–4, `onreadystatechange`, HTTP status versus readyState, success/error handling, `responseText` versus `responseXML`, and updating the page. D Q1(b), Q2(b); A Q4.A.
 4. **Using AJAX with XML**
-   - [ ] AJAX XML — **Core**. Fetch XML, access its DOM and display selected values. Also explain the reference PDF's different flow: server reads XML and returns HTML. Do not confuse storage format with response format. No direct standalone PYQ found.
+   - [x] AJAX XML (§2.6) — **Core**. Fetch XML, access its DOM and display selected values. Also explain the reference PDF's different flow: server reads XML and returns HTML. Do not confuse storage format with response format. No direct standalone PYQ found.
 5. **Using AJAX with a database**
-   - [ ] AJAX database — **Core**. Browser request → server-side query → response → page update. Explain responsibilities and one lookup example; the browser does not directly query the database. No direct standalone PYQ found.
+   - [x] AJAX database (§2.7) — **Core**. Browser request → server-side query → response → page update. Explain responsibilities and one lookup example; the browser does not directly query the database. No direct standalone PYQ found.
 
-Brief support: JSON as an alternative response format (E Q2; cross-reference `json.md`). Explain full versus partial postback in a few lines for E Q2, without introducing an ASP.NET chapter.
+Covered in §§2.2 and 4.4: JSON as an alternative response format (E Q2; see §4.4). Full versus partial postback is explained briefly for E Q2, without introducing an ASP.NET chapter.
 
-### `jquery.md` — Selecting and changing page elements
+### jQuery — sections 3.1–3.6
 
 Reference: [jQuery.pdf](<../../sources/sir's notes/jQuery.pdf>), all 16 pages; pp. 3–5 and 8–14 are the main relevant material.
 
 1. **jQuery's purpose and basic syntax** — Brief support: library versus language, benefits, `$`, selected collections, document readiness and chaining. D December Q4(ii); E Q4.
 2. **Selecting DOM elements**
-   - [ ] jQuery DOM selectors — **High**. Element, ID, class, attribute, descendant/child and a few useful filtering examples. Explain what each selects; avoid an exhaustive selector catalogue. E Q1(b).
+   - [x] jQuery DOM selectors (§3.2) — **High**. Element, ID, class, attribute, descendant/child and a few useful filtering examples. Explain what each selects; avoid an exhaustive selector catalogue. E Q1(b).
 3. **Reading and changing HTML content**
-   - [ ] HTML content — **High**. Getter/setter forms of `text`, `html`, `val` and `attr`; distinguish text, markup, form values and attributes. D Q5 and E Q4 provide application context, not a separate demand for full forms.
+   - [x] HTML content (§3.3) — **High**. Getter/setter forms of `text`, `html`, `val` and `attr`; distinguish text, markup, form values and attributes. D Q5 and E Q4 provide application context, not a separate demand for full forms.
 4. **Changing styles and classes**
-   - [ ] jQuery CSS styles — **High**. Reading/setting `css`; `addClass`, `removeClass`, `toggleClass` and `hasClass`. Show a tiny colour/class example. D Q5, December Q4(i); E Q4.
+   - [x] jQuery CSS styles (§3.4) — **High**. Reading/setting `css`; `addClass`, `removeClass`, `toggleClass` and `hasClass`. Show a tiny colour/class example. D Q5, December Q4(i); E Q4.
 5. **Changing the HTML DOM**
-   - [ ] jQuery HTML DOM — **Core**. Create/insert elements (`append`, `prepend`, `before`, `after`), remove/empty content, and basic parent/children/find traversal. Clarify how this differs from merely changing text or style. E Q4 is broad supporting evidence.
+   - [x] jQuery HTML DOM (§3.5) — **Core**. Create/insert elements (`append`, `prepend`, `before`, `after`), remove/empty content, and basic parent/children/find traversal. Clarify how this differs from merely changing text or style. E Q4 is broad supporting evidence.
 
-Brief support only: ready/click and the mouse events named in D Q1(e); one event-driven content/style example. Add a short explanation of `noConflict` for D December Q4(i). Events and noConflict are not separate named syllabus units; do not expand them into a full API chapter.
+Covered briefly in §§3.1 and 3.6: ready/click and the mouse events named in D Q1(e); one event-driven content/style example. Includes a short explanation of `noConflict` for D December Q4(i). Events and noConflict are not separate named syllabus units; do not expand them into a full API chapter.
 
-### `json.md` — Data representation and conversion
+### JSON — sections 4.1–4.5
 
 Reference: [JSON.pdf](<../../sources/sir's notes/JSON.pdf>), all 33 pages; pp. 2–3, 7–22 and 24–31 are relevant after removing repetition.
 
 1. **What JSON is and where it is used**
-   - [ ] Introduction — **High**. Text-based data interchange, language independence and use with AJAX. Brief XML-versus-JSON comparison, with context rather than claims that one is always better. B Q5.iv–v; D Q4(b)(iii), December Q5(ii); E Q2–3.
+   - [x] Introduction (§4.1, 4.5) — **High**. Text-based data interchange, language independence and use with AJAX. Brief XML-versus-JSON comparison, with context rather than claims that one is always better. B Q5.iv–v; D Q4(b)(iii), December Q5(ii); E Q2–3.
 2. **JSON syntax and data types**
-   - [ ] Syntax — **High**. Names/values, quotes, separators, braces/brackets, nesting and common invalid forms. E Q1(c).
-   - [ ] Data types — **High**. String, number, boolean, null, object and array; briefly identify unsupported values. E Q1(c).
+   - [x] Syntax (§4.2) — **High**. Names/values, quotes, separators, braces/brackets, nesting and common invalid forms. E Q1(c).
+   - [x] Data types (§4.2) — **High**. String, number, boolean, null, object and array; briefly identify unsupported values. E Q1(c).
 3. **Objects and arrays**
-   - [ ] Object — **High**. Named properties, nested objects and accessing values after parsing.
-   - [ ] Arrays — **High**. Ordered values, indexing, arrays of objects and nesting. Use one small book collection for both entries; explain how it extends to the five-book PYQ without repeating records. E Q3.
+   - [x] Object (§4.3) — **High**. Named properties, nested objects and accessing values after parsing.
+   - [x] Arrays (§4.3) — **High**. Ordered values, indexing, arrays of objects and nesting. Use one small book collection for both entries; explain how it extends to the five-book PYQ without repeating records. E Q3.
 4. **Parsing and stringifying JSON**
-   - [ ] Parsing — **Core**. JSON text → JavaScript value using `JSON.parse`; purpose, input/output and invalid-text errors.
-   - [ ] Stringify — **Core**. JavaScript value → JSON text using `JSON.stringify`; purpose and input/output. Pair both operations in one small round-trip example and comparison. Explain JSON text versus a JavaScript object. No direct PYQ found for either operation; both are explicitly required.
+   - [x] Parsing (§4.4) — **Core**. JSON text → JavaScript value using `JSON.parse`; purpose, input/output and invalid-text errors.
+   - [x] Stringify (§4.4) — **Core**. JavaScript value → JSON text using `JSON.stringify`; purpose and input/output. Pair both operations in one small round-trip example and comparison. Explain JSON text versus a JavaScript object. No direct PYQ found for either operation; both are explicitly required.
 
-## What to remove, shorten, or supplement
+## Source material retained, shortened or supplemented
 
-| Material | Decision |
+| Material | Treatment in the completed notes |
 | --- | --- |
-| XML pp. 1–7 repeat introductions, benefits and syntax | Merge into one explanation and reuse one XML example. |
-| XML pp. 12–15 include editor instructions and general CSS | Omit editor/browser walkthroughs and general CSS lessons. Retain only the styling/transformation distinction. Keep XSL-FO, XPath and schema machinery brief; omit SAX, RELAX NG and code generation details. |
-| XML DOM is only mentioned; XSLT lacks a worked transformation | Supply the missing syllabus-level explanations and minimal examples when drafting. DTD attributes/mixed content and a small XSD example also need supplementation. |
-| AJAX repeats long HTML/PHP examples and includes SQL/connection code | Retain the request/response flow and XML/database roles. Omit full PHP/MySQL applications, credentials, table styling and legacy ActiveX/IE branches. Supplement the full ready-state table and response-property explanations. |
-| jQuery lists many effects/events and contains questionable syntax | Omit animation queues, plugin development, XPath-style selector material and exhaustive method lists. Verify selector/filter examples before reuse; correct `ccs`/`xss` to the intended `css`, malformed chaining, and the description of an HTML element as a text node. |
-| JSON repeats individual examples and comparisons | Use one compact data-type table, one nested example and one comparison. Omit IBM MQ/CCSID details, Java/Gson setup, JSON query-language surveys and lengthy nested loops. Add parse/stringify coverage, which is absent. |
-| Reference simplifications can mislead | Do not imply that XML always requires separate closing tags, that AJAX requires XML, or that JSON cannot be validated. Distinguish raw JSON from JavaScript assignment/access examples. Verify technical examples against authoritative documentation during drafting. |
-| PYQs include React/Node, Java/JDBC/Servlets, enterprise frameworks, cloud topics, SPA and Android | Exclude these from this Module III plan. Keep only overlapping syllabus concepts and the explicitly marked brief support above. |
+| Repeated XML introductions, benefits and syntax | Consolidated into §§1.1–1.4, with small book examples. |
+| XML editor instructions and general CSS | Omitted. §1.9 retains the relevant styling/transformation comparison; XPath and XSL-FO remain brief. |
+| Gaps in XML DOM, XSLT, DTD and XSD examples | Filled in §§1.5–1.9. The DTD section also explains mixed content and the numeric `id` issue in A Q2.B.i. |
+| Long AJAX HTML/PHP/MySQL programs and legacy ActiveX branches | Replaced with a short XHR example and clear XML/database flows. §§2.4–2.5 supply the full ready-state table and response explanations. |
+| jQuery effects, obsolete selector syntax and source typos | Omitted or corrected. §§3.2–3.6 explain the required selection/content/style/DOM methods; events and noConflict receive brief PYQ-driven coverage. |
+| Repetitive JSON slides, IBM MQ details, Java setup and query-language surveys | Omitted or consolidated. §4.4 fills the missing parse/stringify coverage. |
+| Misleading source simplifications | Notes distinguish empty XML elements from unclosed tags, parsing from validation, AJAX from its response format, and JSON text from JavaScript objects. They do not claim that JSON cannot be validated. |
+| Older PYQs outside the current scope | React/Node, Java/JDBC/Servlets, enterprise frameworks, cloud topics, SPA and Android are excluded. |
 
-## Remaining uncertainties
+## Scope judgments and final review
 
-- The syllabus uses broad jQuery labels, especially “HTML Content” and “HTML DOM.” The proposed boundary is content/value access, styling, structural changes and basic traversal. No exhaustive method list is implied.
+- The syllabus uses broad jQuery labels, especially “HTML Content” and “HTML DOM.” The completed notes cover content/value access, styling, structural changes and basic traversal. No exhaustive method list is implied.
 - “Mostly theoretical” does not specify a coding proportion or marks distribution. Retain small examples sufficient to explain syntax and mechanisms; do not predict exact marks or reproduce the older application-building workload.
-- “Types of postbacks” in E Q2 is not defined by the supplied notes. Treat full/partial postback as brief context, with the terminology checked before drafting.
-- There is no direct PYQ in this supplied set for several required topics, including namespaces, schema, XML DOM, XSL/XSLT, AJAX XML/database and JSON conversion. All remain in the checklist.
+- “Types of postbacks” in E Q2 is not defined by the supplied notes. §2.2 explains full/partial postback briefly as framework terminology, without adding an ASP.NET unit.
+- There is no direct PYQ in this supplied set for several required topics, including namespaces, schema, XML DOM, XSL/XSLT, AJAX XML/database and JSON conversion. All are covered in the notes despite the absence of a direct PYQ.
+
+Final review: all 28 checklist entries map to the single notes file. The worked DTD/XSD and XML/JSON examples were checked during drafting; this refinement preserves them and clarifies the DTD attribute-type choice. The notes retain complete theoretical explanations and useful examples without reproducing the older full-application workload.

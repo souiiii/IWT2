@@ -33,7 +33,7 @@ Custom tags alone do not guarantee that two systems understand each other. They 
 | Tags | Authors define application-specific tags. | Uses standard elements such as `p`, `h1` and `table`. |
 | Meaning of a tag | Agreed by the application, such as `price`. | Defined by HTML, such as a paragraph or a link. |
 | Syntax | Requires strict nesting, matching case and quoted attributes. | HTML syntax allows some omitted tags and unquoted attribute values. |
-| Error handling | A malformed XML document cannot be processed as well-formed XML. | Browsers attempt to recover from many HTML errors. |
+| Error handling | An XML parser reports malformed XML as an error. | Browsers attempt to recover from many HTML errors. |
 | Presentation | Has no built-in display meaning for custom tags. | Browsers know how to render standard elements; CSS controls styling. |
 
 ## 1.3 Structure of an XML document
@@ -131,7 +131,7 @@ An internal DTD places the declarations inside square brackets within the docume
 </catalogue>
 ```
 
-Here, `catalogue` must contain one or more books. Each book must contain a title followed by an author. The required `id` attribute has type `ID`, so its value must be a valid XML name and unique within the document. `#PCDATA` means parsed character data: text in which markup and entity references are recognized.
+Here, `catalogue` must contain one or more books. Each book must contain a title followed by an author. The required `id` attribute has type `ID`, so its value must be a valid XML name and unique within the document. `#PCDATA` means parsed character data: ordinary text whose entity references are processed. In this declaration, `title` and `author` contain text rather than child elements.
 
 ### External DTD
 
@@ -141,7 +141,7 @@ An external DTD stores the same declarations in a separate file, such as `catalo
 <!DOCTYPE catalogue SYSTEM "catalogue.dtd">
 ```
 
-The external file contains declarations such as `<!ELEMENT catalogue (book+)>`, without the surrounding `DOCTYPE` wrapper. This allows several documents to share one DTD. An internal DTD is convenient for a self-contained document; an external DTD is easier to reuse and maintain.
+The external file contains declarations such as `<!ELEMENT catalogue (book+)>`, without the surrounding `DOCTYPE` wrapper. The `DOCTYPE` name must match the root element, here `catalogue`. Several documents can share the same external DTD. An internal DTD is convenient for a self-contained document; an external DTD is easier to reuse and maintain.
 
 ### Important DTD declarations and symbols
 
@@ -158,7 +158,9 @@ The external file contains declarations such as `<!ELEMENT catalogue (book+)>`, 
 | `#REQUIRED` | The attribute must be supplied. |
 | `#IMPLIED` | The attribute may be omitted, with no default supplied. |
 
-An attribute declaration can also provide a default value, such as `edition CDATA "1"`. `#FIXED "1"` specifies a fixed value. Here, the attribute type `CDATA` means a text value; it is different from a CDATA section inside element content.
+The attribute type `CDATA` means a text value; it is different from a CDATA section inside element content. An attribute declaration can also supply a default value, such as `edition CDATA "1"`; `#FIXED "1"` requires that value if the attribute is supplied.
+
+**An attribute named `id` does not automatically have type `ID`.** For XML such as `<book id="2">`, declare it as `CDATA` if the value must remain `2`: the DTD type `ID` does not allow a value beginning with a digit. This matters in the book example from the 2019 paper.
 
 ### Mixed content
 
@@ -193,7 +195,7 @@ The main components are:
 - **Occurrence constraints:** `minOccurs` and `maxOccurs` control repetition. Their defaults are both `1`.
 - **Restrictions:** constrain values, for example to a permitted range or a list of choices.
 
-A small schema for a book is:
+A small schema for a book is shown below. The prefix `xs` identifies names from the XML Schema vocabulary, such as `xs:element` and `xs:string`.
 
 ```xml
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
@@ -223,7 +225,7 @@ The example and type distinctions follow the [W3C XML Schema primer](https://www
 
 ## 1.7 XML namespaces: Avoiding name conflicts
 
-Two XML vocabularies may use the same name for different things. A book record and a person's record might both contain `title`. A **namespace** distinguishes names by associating them with a unique URI identifier.
+Two XML vocabularies may use the same name for different things. A book record and a person's record might both contain `title`. A **namespace** distinguishes names by associating them with a URI (Uniform Resource Identifier), a string used to identify the vocabulary.
 
 ```xml
 <record xmlns:b="urn:books" xmlns:p="urn:people">
@@ -259,7 +261,7 @@ Document
         └── text: "Web Basics"
 ```
 
-The document node represents the whole document. Element nodes represent tags, while text nodes hold their content. Attributes are associated with their elements; they are not ordinary child nodes in this tree. Comments can also be nodes.
+The document node represents the whole document. Element nodes represent elements, while text nodes hold the text inside them. Attributes are associated with their elements; they are not ordinary child nodes in this tree. Comments can also be nodes.
 
 Typical DOM operations include:
 
@@ -289,9 +291,9 @@ The final statement changes the in-memory tree. It does not automatically rewrit
 
 XML stores data without defining a presentation for its custom tags. **XSL (Extensible Stylesheet Language)** is a family of technologies used to transform and format XML:
 
-- **XSLT:** transforms an XML document into another document, such as HTML, text or XML.
-- **XPath:** selects nodes in an XML tree; XSLT uses it to locate data.
-- **XSL-FO:** describes formatting for page-based output, such as printed documents.
+- **XSLT (XSL Transformations):** transforms an XML document into another document, such as HTML, text or XML.
+- **XPath (XML Path Language):** selects nodes in an XML tree; XSLT uses it to locate data.
+- **XSL-FO (XSL Formatting Objects):** describes formatting for page-based output, such as printed documents.
 
 ### How XSLT works
 
@@ -363,8 +365,6 @@ The working sequence is:
 5. The handler checks whether the request succeeded and reads the returned data.
 6. JavaScript changes the relevant part of the page through the DOM.
 
-The page can remain usable while an asynchronous request is pending. The response may arrive later, so the program must handle it when it becomes available.
-
 ### Traditional requests and AJAX updates
 
 | Traditional full-page request | AJAX request |
@@ -380,15 +380,15 @@ In older exam terminology, a **full postback** submits a page/form and refreshes
 
 AJAX can make interfaces more responsive, preserve page state and reduce repeated transfer of unchanged page content. Typical uses include search suggestions, live validation and loading details for a selected item.
 
-However, it requires JavaScript and careful handling of delays, errors and loading states. Frequent requests can increase server load. Browser security rules also restrict requests to other origins unless the server permits them through **CORS (Cross-Origin Resource Sharing)**. AJAX does not remove network latency; it allows the interface to continue while waiting.
+However, it requires JavaScript and careful handling of delays, errors and loading states. Frequent requests can increase server load. Reading an AJAX response from a different origin (a different scheme, host or port) requires permission from that server through **CORS (Cross-Origin Resource Sharing)**. AJAX does not remove network delays; it allows the interface to continue while waiting.
 
 ## 2.3 Synchronous requests, asynchronous requests and callbacks
 
 A **synchronous request** blocks the calling code until the response is available. On the browser's main thread, this can make the interface unresponsive.
 
-An **asynchronous request** lets the calling code continue. The browser invokes an event handler later when the request progresses or finishes. This is the normal approach for AJAX.
+An **asynchronous request** lets the calling code continue. The browser invokes a registered function, called an event handler, as the request progresses or finishes. This is the normal approach for AJAX.
 
-A **callback** is a function supplied to be called later. A response callback keeps response-dependent work in the correct place: code cannot safely read the result immediately after starting an asynchronous request. The [MDN explanation of synchronous and asynchronous requests](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest_API/Synchronous_and_Asynchronous_Requests) illustrates this distinction.
+A **callback** is a function supplied to be called later. A response callback processes the result when it is available. Code immediately after `send()` may run before the response arrives, so it cannot assume that the data is ready. The [MDN explanation of synchronous and asynchronous requests](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest_API/Synchronous_and_Asynchronous_Requests) illustrates this distinction.
 
 ## 2.4 The XMLHttpRequest object
 
@@ -452,7 +452,7 @@ xhr.open("GET", "message.txt", true);
 xhr.send();
 ```
 
-The callback waits until the operation finishes, checks for a successful HTTP status and displays the response. The third argument to `open()` enables asynchronous operation. `textContent` displays the returned value as text rather than interpreting it as HTML.
+The callback runs when the ready state changes. It ignores unfinished states, then checks the HTTP status and displays either the response or an error message. The third argument to `open()` enables asynchronous operation. `textContent` displays the returned value as text rather than interpreting it as HTML.
 
 ### GET versus POST
 
@@ -492,7 +492,7 @@ The format stored on the server need not be the format returned to the browser.
 
 AJAX can display database information without reloading the page. For example, selecting a student ID can load that student's details.
 
-1. JavaScript sends the selected ID to a server endpoint.
+1. JavaScript sends the selected ID to a server URL that handles the lookup.
 2. Server-side code validates the input and queries the database.
 3. The server formats the result as JSON, XML, HTML or text.
 4. It sends that result in the HTTP response.
@@ -798,7 +798,7 @@ For the same simple record, XML might be `<book><title>Web Basics</title><editio
 
 **Why is JSON often preferred for message exchange?** It is usually concise for ordinary records, maps naturally to objects and arrays, carries primitive types directly, and is easy to parse/stringify in JavaScript. These are four useful reasons for an exam answer.
 
-This is not a claim that JSON is always faster or better. XML remains useful when namespaces, document markup or XML transformation workflows are important. Neither format alone guarantees that data is correct, secure or understood by the receiver.
+The choice depends on the data and the application. XML remains useful when namespaces, document markup or XML transformations are important.
 
 # 5. Final revision check
 
